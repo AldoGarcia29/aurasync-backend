@@ -1,0 +1,21 @@
+package com.aurasync.aura.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record LoginRequest(
+
+        @NotBlank(message = "El correo es obligatorio")
+        @Email(message = "El formato del correo no es válido")
+        String correo,
+
+        @NotBlank(message = "La contraseña es obligatoria")
+        @Size(
+                min = 8,
+                max = 100,
+                message = "La contraseña debe contener entre 8 y 100 caracteres"
+        )
+        String password
+) {
+}
